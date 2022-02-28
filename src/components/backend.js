@@ -31,6 +31,48 @@ export const logUsers = (user) => {
     }
     )
 
+
+}
+
+export const getUserById = (id, token) => {
+    return fetch(`http://localhost:8080/v1/api/users/${id}`, {
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        method: "GET",
+        headers: {
+
+            Authorization: `Bearer ${token}`,
+
+        }
+    }).then(data => {
+        return data.json();
+    }).catch(err => {
+        console.log(err)
+    }
+    )
+
+}
+export const updateUser = (user, id, token) => {
+    return fetch(`http://localhost:8080/v1/api/users/${id}`, {
+        headers: {
+            'Content-Type': 'application/json',
+
+
+            Authorization: `Bearer ${token}`,
+
+
+        },
+        method: "PUT",
+        body: JSON.stringify(user)
+    }).then(data => {
+        return data.json();
+    }).catch(err => {
+        console.log(err)
+    }
+    )
+
+
 }
 
 export const isAutheticated = () => {

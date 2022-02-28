@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Button, Col, Container, Form, Row, Alert } from 'react-bootstrap'
+import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import Base from '../Base'
 import { createUser } from '../backend'
+import CustomAlerts from '../CustomAlerts'
 
 function SignUp() {
   const [user, setUser] = useState({
@@ -64,18 +65,10 @@ function SignUp() {
             {/* {loading} */}
 
             {/* display error message */}
-            {message && <Alert variant={"success"}>
-              {message}
+            {message && <CustomAlerts info={message} color="success" />}
+            {error && <CustomAlerts info={error} color="danger" />}
 
 
-
-            </Alert>}
-            {error && <Alert variant={"danger"}>
-              {error}
-
-
-
-            </Alert>}
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>First Name</Form.Label>
