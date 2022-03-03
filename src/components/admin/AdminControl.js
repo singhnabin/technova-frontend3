@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Base from '../Base';
 import { Row, Col, Table, Container, Button } from 'react-bootstrap';
 import { getAllUser, deleteUser } from './index';
 import { isAutheticated } from '../backend';
 import CustomAlerts from '../CustomAlerts';
 import { Link } from 'react-router-dom';
+import {  UserContext } from '../context/UserContext';
 
 function AdminControl() {
-
-
+    // const {cartContext,cartDispatch}= useContext(UserContext);
     const [userList, setUserList] = useState([]);
     const isLoggedIn = isAutheticated();
     const [message, setMessage] = useState('');
@@ -30,23 +30,29 @@ function AdminControl() {
 
     }, [userLength])
 
+const addToCart=(user)=>{
+   // cartDispatch({type:'ADD',payload:user});
+    // setCartIte
+}
 
     const handleDelete = userId => {
-        deleteUser(userId, isLoggedIn.token).
-            then(res => {
 
-                if (res.statusCode === 200) {
-                    setMessage(res.message)
-                    setUserLength(userLength - 1);
+        console.log("i am clicked "+userId)
+        // deleteUser(userId, isLoggedIn.token).
+        //     then(res => {
 
-                } else {
-                    setError(res.errors)
-                }
-            }
+        //         if (res.statusCode === 200) {
+        //             setMessage(res.message)
+        //             setUserLength(userLength - 1);
 
-            ).catch(err => {
-                console.log(err)
-            })
+        //         } else {
+        //             setError(res.errors)
+        //         }
+        //     }
+
+        //     ).catch(err => {
+        //         console.log(err)
+        //     })
     }
 
 
@@ -83,7 +89,9 @@ function AdminControl() {
                                             <td>
                                                 <Link to={`/update/user/${user.id}`}><Button variant="outline-info">Update</Button></Link>
                                                 {"     "}
-                                                <Button variant="outline-danger" onClick={() => handleDelete(user.id)}>Delete</Button>
+                                                <Button variant="outline-danger" onClick={()=>handleDelete(user.id)}>Delete</Button>
+                                               {'    '}
+                                                {/* <Button variant="outline-danger" onClick={()=>addToCart(user)}>ADD</Button> */}
                                             </td>
                                         </tr>)
                                     }

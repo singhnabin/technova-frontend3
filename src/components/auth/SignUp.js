@@ -9,7 +9,8 @@ function SignUp() {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    userUrl:""
   })
 
   const [message, setMessage] = useState("")
@@ -22,6 +23,9 @@ function SignUp() {
     setUser({ ...user, firstName: firstName })
   }
 
+  const handleProfile=e=>{
+    setUser({...user,userUrl: e.target.value})
+  }
   const handleLastName = event => {
     const lastName = event.target.value
     setUser({ ...user, lastName: lastName })
@@ -86,6 +90,15 @@ function SignUp() {
                   placeholder="Enter lastname"
                   onChange={handleLastName}
                 />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>Profile Url</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter lastname"
+                  onChange={handleProfile}
+                />
+                
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -106,7 +119,7 @@ function SignUp() {
               </Form.Group>
 
               <Button variant="outline-info" type="button"
-                onClick={handleClick}
+                onClick={()=>handleClick()}
               >
                 Submit
             </Button>

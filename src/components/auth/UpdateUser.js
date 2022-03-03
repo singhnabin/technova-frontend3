@@ -18,6 +18,7 @@ function UpdateUser(props) {
 
     })
 
+    //const { firstName,lastName,email}=user;
     const [message, setMessage] = useState("")
     const [error, setError] = useState('');
 

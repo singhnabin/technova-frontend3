@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { isAutheticated } from "./backend";
-import { Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 function Header() {
   const history = useHistory();
@@ -33,7 +33,7 @@ function Header() {
           <Nav>
 
 
-            <Nav.Link href="/about">About Us</Nav.Link>
+            <Nav.Link href="/shop">Shoping</Nav.Link>
             {isLoggedIn && <Nav.Link href="/admin">Admin</Nav.Link>}
 
 
@@ -58,7 +58,7 @@ function Header() {
 
                 <NavDropdown title="Account" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/user">Profile</NavDropdown.Item>
-                  <NavDropdown.Item href="/cart">Go To Cart</NavDropdown.Item>
+                 <Link to='/cart'>Go To Cart</Link>
                   <NavDropdown.Item href="/orders">Order History</NavDropdown.Item>
                   <NavDropdown.Item onClick={handleLogOut}>Logout</NavDropdown.Item>
                 </NavDropdown>
