@@ -30,7 +30,7 @@ console.log(userCart)
         <Route exact path="/cart" component={Cart} />
        <Route exact path="/admin" component={AdminControl} />
         <Route exact path="/update/user/:userId" component={UpdateUser} />
-        </UserContext.Provider>
+       
         {/* <Route exact path="/product/create/id" component={AddProduct} /> */}
         
 
@@ -38,6 +38,7 @@ console.log(userCart)
         <Route exact path="/signup" component={SignUp} />
         {/* admin route */}
         {/* <Route exact path="/admin" component={Index}></Route> */}
+         </UserContext.Provider>
       </Switch>
     </BrowserRouter>
    
